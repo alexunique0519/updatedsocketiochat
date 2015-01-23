@@ -1,5 +1,6 @@
 {
     "name": "chatapp",
+     "main": "index.js",
     "dependencies":{
         "express": "*",
         "engine.io": "*",
