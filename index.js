@@ -1,13 +1,19 @@
 var express = require("express"),
     app = express(),
+    
+    var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080
+var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1'
+ 
+
     server = require('http').createServer(app),
     port = process.env.PORT || 8080,
     io = require('socket.io')(server),
     _ = require('underscore');
 
-server.listen(port, function(){
-    console.log("Server listening at port %d", port);
+server.listen(server_port, server_ip_address, function () {
+  console.log( "Listening on " + server_ip_address + ", server_port " + port )
 });
+
 
 io.on('connection', function (socket) {
   // when the client emits 'receive message', this listens and executes
